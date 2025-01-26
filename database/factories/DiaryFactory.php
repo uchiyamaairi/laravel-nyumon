@@ -23,8 +23,8 @@ class DiaryFactory extends Factory
     {
         return [
             'date' => $this->faker->dateTimeBetween('-1 year', 'now'),
-            'title' => $this->faker->sentence(3),
-            'body' => $this->faker->paragraph(3),
+            'title' => $this->faker->realText(10),
+            'body' => $this->faker->realText(50),
             'created_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
             'updated_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
         ];

@@ -39,7 +39,7 @@ class PracticeTest extends TestCase
     #[Group('station8')]
     public function test_diariesテーブルのカラムの型が正しい()
     {
-        $columns = Schema::getColumnListing('products');
+        $columns = Schema::getColumnListing('diaries');
 
         $this->assertEquals('bigint', Schema::getColumnType('diaries', 'id'));
         $this->assertEquals('date', Schema::getColumnType('diaries', 'date'));
