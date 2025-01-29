@@ -1,0 +1,14 @@
+{
+  "name": "Station 03",
+  "id": 829,
+  "prepare": [],
+  "tests": [
+    {
+      "type": "junit-compat",
+      "command": "docker compose exec php-container vendor/bin/phpunit tests/Feature/LaravelNyumon/Station3 --log-junit ./test-outputs/station03.xml",
+      "args": [],
+      "shell": true,
+      "reportFile": "/test-outputs/station03.xml"
+    }
+  ]
+}
