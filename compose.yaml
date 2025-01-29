@@ -10,27 +10,6 @@ services:
         depends_on:
             - php-container
 
-    composer_installation:
-        container_name: laravel-nyumon-composer-installation
-        image: composer
-        volumes:
-          - ./:/app
-        entrypoint:
-            - sh
-        command:
-            # .exec-onceというファイルがあったら実行しない
-            # 最初にコマンド実行がなされていたら、.exec-onceというファイルが作成されるようにしている
-            # .exec-onceがあるが、すでにcomposer installなどが実行されているケースもあるため、
-            # 注意すること。もし.exec-onceがあるのに、次のものが存在する場合は、何かしら個人で触った影響。
-            # 1. .env ファイルがある
-            # 2. vendorディレクトリがある(composer installが実行済みであるということ)
-            # 3. php artisan key:generateされている(.envファイルのAPP_KEY=のあとの文字がある場合はkey:generateが実行済みということ)
-            - -c
-            - |
-              [ -f ./.exec-once ] || {
-                cp .env.example .env && composer install --ignore-platform-reqs && php artisan key:generate && touch ./.exec-once
-              }
-
     yarn_installation:
         container_name: laravel-nyumon-yarn-installation
         image: node:22-bookworm
@@ -56,7 +35,6 @@ services:
         volumes:
             - ./:/var/www:cached
         depends_on:
-            - composer_installation
             - yarn_installation
         env_file:
             - .env

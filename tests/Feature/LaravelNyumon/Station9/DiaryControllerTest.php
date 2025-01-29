@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\LaravelNyumon\Station10;
+namespace Tests\Feature\LaravelNyumon\Station9;
 
 use Tests\TestCase;
 use PHPUnit\Framework\Attributes\Group;
